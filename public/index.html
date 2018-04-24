@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBFtMDFZLzVG70OBFKCS2cm_dGKbB0-pdM",
+        authDomain: "smart-scheduler-csudh.firebaseapp.com",
+        databaseURL: "https://smart-scheduler-csudh.firebaseio.com",
+        projectId: "smart-scheduler-csudh",
+        storageBucket: "smart-scheduler-csudh.appspot.com",
+        messagingSenderId: "157148736705"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CSUDH Smart Scheduler</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.min.css" rel="stylesheet">
+
+    <script>function myMap() {
+      var mapCanvas = document.getElementById("map");
+      var mapOptions = {
+        center: new google.maps.LatLng(33.863, -118.256),
+        zoom: 15.5
+      };
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+    }</script>
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">CSUDH Smart Class Scheduler</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#download">Add Classes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#features">View Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Map</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-lg-7 my-auto">
+            <div class="header-content mx-auto">
+              <h1 class="mb-5">A class scheduler that is almost as smart and beautiful as you are. </h1>
+              <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now!</a>
+            </div>
+          </div>
+          <div class="col-lg-5 my-auto">
+      
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="download bg-primary text-center" id="download">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <h2 class="section-heading">Add Classes</h2>
+			<div class="col mt-sm-6 mt-md-0">
+    <form>
+        <!--Class 1-->
+            <div class="form-group row">
+                <label for="class1" class="col-3 col-form-label-lg">Class 1</label>
+                <div class="col-4">
+                        <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class1">
+                </div>
+            </div>
+        <!--Class 2-->
+            <div class="form-group row">
+                    <label for="class2" class="col-3 col-form-label-lg">Class 2</label>
+                    <div class="col-4">
+                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class2">
+                    </div>
+            </div>
+        <!--Class 3-->
+            <div class="form-group row">
+                    <label for="class3" class="col-3 col-form-label-lg">Class 3</label>
+                    <div class="col-4">
+                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class3">
+                    </div>
+            </div>
+        <!--Class 4-->
+            <div class="form-group row">
+                    <label for="class4" class="col-3 col-form-label-lg">Class 4</label>
+                    <div class="col-4">
+                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class4">
+                    </div>
+            </div>
+        <!--Class 5-->
+            <div class="form-group row">
+                    <label for="class5" class="col-3 col-form-label-lg">Class 5</label>
+                    <div class="col-4">
+                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class5">
+                    </div>
+            </div>
+        <!--Check if all classes are neccessary-->
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input-lg" id="checkBox">
+                <label class="form-check-label-lg" for="exampleCheck1">Check box if all classes are neccessary.</label>
+            </div>
+            <button><i class= "fa fa-arrow-right" id = "arrowbtn" aria-hidden = "true" onclick = "donow()"></i></button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="contact bg-secondary" id="contact">
+      <div class="col mt-sm-6 mt-md-0">
+      <div class="container">
+        <h2>Your customized map and schedule!
+          <i class="fa fa-heart"></i></h2>
+
+
+    </div>
+    <div id="map" style="width:100%;height:400px;">
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKVTMchT2jJv8oFJmjw1wSdfH02Lx1XU&callback=myMap"></script>
+		</div>
+
+      </div>
+	  
+	  
+    </section>
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/new-age.min.js"></script>
+    <script src = "index.js"></script>
+  </body>
+
+</html>
