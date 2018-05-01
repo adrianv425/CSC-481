@@ -39,15 +39,6 @@
 
     <!-- Custom styles for this template -->
     <link href="css/new-age.min.css" rel="stylesheet">
-
-    <script>function myMap() {
-      var mapCanvas = document.getElementById("map");
-      var mapOptions = {
-        center: new google.maps.LatLng(33.863, -118.256),
-        zoom: 15.5
-      };
-      var map = new google.maps.Map(mapCanvas, mapOptions);
-    }</script>
   </head>
 
   <body id="page-top">
@@ -55,7 +46,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CSUDH Smart Class Scheduler</a>
+        <a class="navbar-brand js-scroll-trigger" href="index.html">CSUDH Smart Class Scheduler</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -103,35 +94,35 @@
             <div class="form-group row">
                 <label for="class1" class="col-3 col-form-label-lg">Class 1</label>
                 <div class="col-4">
-                        <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class1">
+                        <input class="form-control-lg" type="text"  value = "" placeholder = "CSC xxx" id="class1">
                 </div>
             </div>
         <!--Class 2-->
             <div class="form-group row">
                     <label for="class2" class="col-3 col-form-label-lg">Class 2</label>
                     <div class="col-4">
-                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class2">
+                            <input class="form-control-lg" type="text"  value = "" placeholder = "CSC xxx" id="class2">
                     </div>
             </div>
         <!--Class 3-->
             <div class="form-group row">
                     <label for="class3" class="col-3 col-form-label-lg">Class 3</label>
                     <div class="col-4">
-                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class3">
+                            <input class="form-control-lg" type="text"  value = ""  placeholder = "CSC xxx" id="class3">
                     </div>
             </div>
         <!--Class 4-->
             <div class="form-group row">
                     <label for="class4" class="col-3 col-form-label-lg">Class 4</label>
                     <div class="col-4">
-                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class4">
+                            <input class="form-control-lg" type="text"  value = "" placeholder = "CSC xxx" id="class4">
                     </div>
             </div>
         <!--Class 5-->
             <div class="form-group row">
                     <label for="class5" class="col-3 col-form-label-lg">Class 5</label>
                     <div class="col-4">
-                            <input class="form-control-lg" type="text" placeholder = "CSC xxx" id="class5">
+                            <input class="form-control-lg" type="text" value = "" placeholder = "CSC xxx" id="class5">
                     </div>
             </div>
         <!--Check if all classes are neccessary-->
@@ -139,7 +130,7 @@
                 <input type="checkbox" class="form-check-input-lg" id="checkBox">
                 <label class="form-check-label-lg" for="exampleCheck1">Check box if all classes are neccessary.</label>
             </div>
-            <button><i class= "fa fa-arrow-right" id = "arrowbtn" aria-hidden = "true" onclick = "donow()"></i></button>
+            <button><a href="#contact" class="btn btn-outline btn-xl" onclick = "donow()">Start!</a></button>
             </form>
             
           </div>
@@ -147,25 +138,46 @@
       </div>
     </section>
 
-
     <section class="contact bg-secondary" id="contact">
-      <div class="col mt-sm-6 mt-md-0">
+      <div class="row mt-sm-6 mt-md-0">
       <div class="container">
-        <h2>Your customized map and schedule!
-          <i class="fa fa-heart"></i></h2>
-
-
-    </div>
-    <div id="map" style="width:100%;height:400px;">
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKVTMchT2jJv8oFJmjw1wSdfH02Lx1XU&callback=myMap"></script>
-		</div>
-
-      </div>
-	  
-	  
-    </section>
+        <h2>All available classes</h2>
+            <div class="panel-group">
+              <div class="panel panel-danger">
+                <div class="panel-heading" id = "headc1">Class 1 options</div>
+                <div class="panel-body" id = "c1"></div>
+              </div>
+          
+              <div class="panel panel-primary">
+                <div class="panel-heading" id = "headc2">Class 2 options</div>
+                <div class="panel-body" id = "c2"></div>
+              </div>
+          
+              <div class="panel panel-success">
+                <div class="panel-heading" id = "headc3">Class 3 options</div>
+                <div class="panel-body" id = "c3"></div>
+              </div>
+          
+              <div class="panel panel-info">
+                <div class="panel-heading" id = "headc4">Class 4 options</div>
+                <div class="panel-body" id = "c4"></div>
+              </div>
+          
+              <div class="panel panel-warning">
+                <div class="panel-heading" id = "headc5">Class 5 options</div>
+                <div class="panel-body" id = "c5"></div>
+              </div>
+          
+            </div>
 
     
+  </div>
+    <div id="map" style="width:100%;height:400px;">
+		<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKVTMchT2jJv8oFJmjw1wSdfH02Lx1XU&callback=myMap"></script>-->
+		</div>
+
+    </div>
+    </section>    
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
