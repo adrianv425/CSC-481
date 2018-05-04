@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBFtMDFZLzVG70OBFKCS2cm_dGKbB0-pdM",
+            authDomain: "smart-scheduler-csudh.firebaseapp.com",
+            databaseURL: "https://smart-scheduler-csudh.firebaseio.com",
+            projectId: "smart-scheduler-csudh",
+            storageBucket: "smart-scheduler-csudh.appspot.com",
+            messagingSenderId: "157148736705"
+          };
+          firebase.initializeApp(config);
+        </script>
+        <script>
+        var sel = [];
+        function test(){
+            var firebaseD = firebase.database();
+            c1Ref = firebaseD.ref("/CSC/123");
+            c1Ref.once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childData = childSnapshot.val();
+                    sel[sel.length] = childData;
+                })
+                console.log(sel.length);
+                getSel();
+            });
+        }
+    
+        function getSel(){
+            console.log(sel.length)
+            document.getElementById("hopefully").innerHTML = sel[0].name;
+            
+        }
+            </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tester</title>
+  </head>
+  <body onload="test()">
+      <div>Test test</div>
+    <div class='panel-body' id = "hopefully">
+    </div>
+  </body>
+  
+</html>

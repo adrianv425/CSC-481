@@ -23,11 +23,11 @@ function donow(){
 
 
     //Test window
-    alert("You inputted:\n" + c1Element +"\n" 
+    /*alert("You inputted:\n" + c1Element +"\n" 
                     + c2Element +"\n" 
                     + c3Element +"\n"  
                     + c4Element +"\n"  
-                    + c5Element);
+                    + c5Element);*/
 
     //Slice string to have the class name (CSC, BUS, CIS) and course number (101,121,301)
     if(c1Element.length > 5){
@@ -69,31 +69,31 @@ function donow(){
         }
     }
 
-    allSelections(c1Ref, 1);
-    allSelections(c2Ref, 2);
-    allSelections(c3Ref, 3);
-    allSelections(c4Ref, 4);
-    allSelections(c5Ref, 5);
 
+    allSelections(c1Ref, 1, c1selections);
+    allSelections(c2Ref, 2, c2selections);
+    allSelections(c3Ref, 3, c3selections);
+    allSelections(c4Ref, 4, c4selections);
+    allSelections(c5Ref, 5, c5selections);
 }
 
-function getName1(){
-    return name1;
-}
+function allSelections(ref, num, sel){
 
-function allSelections(ref, num){
-
-    ref.on('value', function(snapshot) {
+    ref.once('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             var childData = childSnapshot.val();
+            //display all available sections for each course
             document.getElementById("headc" + num).innerHTML = childData.name || "not found";
             document.getElementById("c" + num).innerHTML = (document.getElementById("c"+num).innerHTML 
-                    + "<div class='panel-body' id = '" +childData.sub +childData.course + childData.sec+"'>"
-                    +"*elementId for this class = "+childData.sub +childData.course + childData.sec + "<br>" + childData.sub+ childData.course 
-                    + " section:" + childData.sec + " @ " + childData.time + " on " + childData.days + "<br>"
-                    +"Taught by: " + childData.pFirstName + " " + childData.pLastName + " who is rated x/5.0</div>");
-
-        });
-    });
+                        + "<div class='panel-body' id = '" +childData.sub +childData.course + childData.sec+"'>"
+                        +"*elementId for this class = "+childData.sub +childData.course + childData.sec + "<br>" + childData.sub+ childData.course 
+                        + " section:" + childData.sec + " @ " + childData.time + " on " + childData.days + "<br>"
+                        +"Taught by: " + childData.pFirstName + " " + childData.pLastName + " who is rated x/5.0</div>");
+            sel[sel.length] = childData;
+       });
+      });
 }
 
+function blah(){
+
+}
