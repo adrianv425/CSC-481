@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 <link href="css/new-age.min.css" rel="stylesheet">
-
+<script src = "index.js"></script>
 <script src='js/fullcalendar.js'></script>
 <script>
 
@@ -64,13 +64,13 @@
 		var calendar =  $('#calendar').fullCalendar({
 			header: {
 				left: 'title',
-				center: 'agendaDay,agendaWeek,month',
+				center: 'agendaDay,agendaWeek',
 				right: 'prev,next today'
 			},
 			editable: true,
 			firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
 			selectable: true,
-			defaultView: 'month',
+			defaultView: 'week',
 			
 			axisFormat: 'h:mm',
 			columnFormat: {
@@ -128,19 +128,19 @@
 			
 			events: [
 				{
-					title: 'All Day Event',
+					title: "Unknown",
 					start: new Date(y, m, 1)
 				},
 				{
 					id: 999,
-					title: 'Discrete_Mathematics',
+					title: getSchedule()[0].name,
 					start: new Date(y, m, d-3, 16, 0),
 					allDay: false,
 					className: 'info'
 				},
 				{
 					id: 999,
-					title: 'Intro_CSC',
+					title: getSchedule()[1].name,
 					start: new Date(y, m, d+4, 16, 0),
 					allDay: false,
 					className: 'info'
