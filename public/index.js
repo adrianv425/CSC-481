@@ -15,7 +15,7 @@ var c1selections =[], c2selections =[], c3selections =[], c4selections =[], c5se
 var selected = [];
 
 function donow(){
-
+    sessionStorage.clear();
     //Get the values inputted by the user and hold them in variables respectively
     var c1Element = document.getElementById('class1').value;
     var c2Element = document.getElementById('class2').value;
@@ -310,7 +310,12 @@ function scheduler(){
 
             //if no collisions, class fits!
             if(terminator != true){
-
+                //save times and days in storage
+                sessionStorage.setItem("days" + t, row1);
+                sessionStorage.setItem("sTime"+ t,sTime*15);
+                sessionStorage.setItem("eTime"+ t,eTime*15);
+                sessionStorage.setItem("startTime"+t, (startTime/4 + 7));
+                sessionStorage.setItem("endTime"+t, (endTime/4 + 7));
                 //save selected class
                 selected[t] = temp[t][i];
                 //mark all spaces in the schedule 2d array as occupied
@@ -340,9 +345,10 @@ function scheduler(){
             t++;
         }
     }
-    console.log("Done: "+selected[0].name);
+    var str = JSON.stringify(selected);
+    sessionStorage.setItem("selected", str);
 }
 
 function getSchedule(){
-    return selected;
+    return selected[0].name;
 }

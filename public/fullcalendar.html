@@ -6,21 +6,12 @@
 
 <script src='js/jquery/jquery-1.10.2.js'></script>
 <script src='js/jquery/jquery-ui.custom.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom fonts for this template -->
-<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-<link href="css/new-age.min.css" rel="stylesheet">
-<script src = "index.js"></script>
 <script src='js/fullcalendar.js'></script>
+<script src='index.js'></script>
 <script>
-
+	var obj = JSON.parse(sessionStorage.getItem("selected"));
+	
 	$(document).ready(function() {
 	    var date = new Date();
 		var d = date.getDate();
@@ -67,10 +58,10 @@
 				center: 'agendaDay,agendaWeek',
 				right: 'prev,next today'
 			},
-			editable: true,
+			editable: false,
 			firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
 			selectable: true,
-			defaultView: 'week',
+			defaultView: 'month',
 			
 			axisFormat: 'h:mm',
 			columnFormat: {
@@ -128,43 +119,40 @@
 			
 			events: [
 				{
-					title: "Unknown",
-					start: new Date(y, m, 1)
-				},
-				{
-					id: 999,
-					title: getSchedule()[0].name,
-					start: new Date(y, m, d-3, 16, 0),
+					title: obj[0].name,
+					start: new Date(2018, m, sessionStorage.getItem("days0"), sessionStorage.getItem("startTime0"), (sessionStorage.getItem("sTime0"))),
+					end: new Date(2018, m, sessionStorage.getItem("days0"), sessionStorage.getItem("endTime0"), (sessionStorage.getItem("eTime0"))),
 					allDay: false,
 					className: 'info'
 				},
 				{
-					id: 999,
-					title: getSchedule()[1].name,
-					start: new Date(y, m, d+4, 16, 0),
+					title: obj[1].name,
+					start: new Date(2018, m, sessionStorage.getItem("days1"), sessionStorage.getItem("startTime1"), (sessionStorage.getItem("sTime1"))),
+					end: new Date(2018, m, sessionStorage.getItem("days1"), sessionStorage.getItem("endTime1"), (sessionStorage.getItem("eTime1"))),
 					allDay: false,
-					className: 'info'
+					className: 'success'
 				},
 				{
-					title: 'Calculus II',
-					start: new Date(y, m, d, 10, 30),
+					title: obj[2].name,
+					start: new Date(2018, m, sessionStorage.getItem("days2"), sessionStorage.getItem("startTime2"), (sessionStorage.getItem("sTime2"))),
+					end: new Date(2018, m, sessionStorage.getItem("days2"), sessionStorage.getItem("endTime2"), (sessionStorage.getItem("eTime2"))),
+					allDay: false,
+					className: 'default'
+				},
+				{
+					title: obj[3].name,
+					start: new Date(2018, m, sessionStorage.getItem("days3"), sessionStorage.getItem("startTime3"), (sessionStorage.getItem("sTime3"))),
+					end: new Date(2018, m, sessionStorage.getItem("days3"), sessionStorage.getItem("endTime3"), (sessionStorage.getItem("eTime3"))),
 					allDay: false,
 					className: 'important'
 				},
 				{
-					title: 'Analysis_of_algorithms',
-					start: new Date(y, m, d, 14, 0),
-					end: new Date(y, m, d, 16, 0),
+					title: obj[4].name,
+					start: new Date(2018, m, sessionStorage.getItem("day4"), sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
+					end: new Date(2018, m, sessionStorage.getItem("days4"), sessionStorage.getItem("endTime4"), (sessionStorage.getItem("eTime4"))),
 					allDay: false,
-					className: 'important'
+					className : 'chill'
 				},
-				{
-					title: 'Intro to CSC II',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false,
-				},
-
 			],			
 		});
 		
@@ -232,48 +220,11 @@
 </style>
 </head>
 <body>
-	
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-			<div class="container">
-			  <a class="navbar-brand js-scroll-trigger" href="index.html">CSUDH Smart Class Scheduler</a>
-			  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				Menu
-				<i class="fa fa-bars"></i>
-			  </button>
-			  <div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-				  <li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#download">Add Classes</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#features">View Schedule</a>
-				  </li>
-				  <li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#contact">Map</a>
-				  </li>
-				</ul>
-			  </div>
-			</div>
-		  </nav>
-<header class="masthead">
-	<div class="container h-100">
-		<div class="row h-100">
-		<div class="col-lg-7 my-auto">
-			<div class="header-content mx-auto">
-		  <div id='wrap'>
+<div id='wrap'>
 
-
-<div id='calendar'>
+<div id='calendar'></div>
 
 <div style='clear:both'></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</header>
 </body>
 </html>
