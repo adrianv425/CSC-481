@@ -181,7 +181,7 @@ function scheduler(){
                         row2 = 5;
                         break;  
                     default:
-                        row2 = 10;
+                        row2 = row1;
                         console.log("class days not available: " + temp[t][i].days.substr(1,1));
                         break;
                 }
@@ -211,7 +211,7 @@ function scheduler(){
                         row3 = 5;
                         break;  
                     default:
-                        row3 = 10;
+                        row3 = row2;
                         console.log("class days not available: " + temp[t][i].days.substr(2,1));
                         break;
                 }
@@ -312,6 +312,7 @@ function scheduler(){
             if(terminator != true){
                 //save times and days in storage
                 sessionStorage.setItem("days" + t, row1);
+                sessionStorage.setItem("days0"+t, row2);
                 sessionStorage.setItem("sTime"+ t,sTime*15);
                 sessionStorage.setItem("eTime"+ t,eTime*15);
                 sessionStorage.setItem("startTime"+t, (startTime/4 + 7));

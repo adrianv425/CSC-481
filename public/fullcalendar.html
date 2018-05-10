@@ -126,9 +126,23 @@
 					className: 'info'
 				},
 				{
+					title: obj[0].name,
+					start: new Date(2018, m, sessionStorage.getItem("days00"), sessionStorage.getItem("startTime0"), (sessionStorage.getItem("sTime0"))),
+					end: new Date(2018, m, sessionStorage.getItem("days00"), sessionStorage.getItem("endTime0"), (sessionStorage.getItem("eTime0"))),
+					allDay: false,
+					className: 'info'
+				},
+				{
 					title: obj[1].name,
 					start: new Date(2018, m, sessionStorage.getItem("days1"), sessionStorage.getItem("startTime1"), (sessionStorage.getItem("sTime1"))),
 					end: new Date(2018, m, sessionStorage.getItem("days1"), sessionStorage.getItem("endTime1"), (sessionStorage.getItem("eTime1"))),
+					allDay: false,
+					className: 'success'
+				},
+				{
+					title: obj[1].name,
+					start: new Date(2018, m, sessionStorage.getItem("days01"), sessionStorage.getItem("startTime1"), (sessionStorage.getItem("sTime1"))),
+					end: new Date(2018, m, sessionStorage.getItem("days01"), sessionStorage.getItem("endTime1"), (sessionStorage.getItem("eTime1"))),
 					allDay: false,
 					className: 'success'
 				},
@@ -140,6 +154,13 @@
 					className: 'default'
 				},
 				{
+					title: obj[2].name,
+					start: new Date(2018, m, sessionStorage.getItem("days02"), sessionStorage.getItem("startTime2"), (sessionStorage.getItem("sTime2"))),
+					end: new Date(2018, m, sessionStorage.getItem("days02"), sessionStorage.getItem("endTime2"), (sessionStorage.getItem("eTime2"))),
+					allDay: false,
+					className: 'default'
+				},
+				{
 					title: obj[3].name,
 					start: new Date(2018, m, sessionStorage.getItem("days3"), sessionStorage.getItem("startTime3"), (sessionStorage.getItem("sTime3"))),
 					end: new Date(2018, m, sessionStorage.getItem("days3"), sessionStorage.getItem("endTime3"), (sessionStorage.getItem("eTime3"))),
@@ -147,9 +168,93 @@
 					className: 'important'
 				},
 				{
+					title: obj[3].name,
+					start: new Date(2018, m, sessionStorage.getItem("days03"), sessionStorage.getItem("startTime3"), (sessionStorage.getItem("sTime3"))),
+					end: new Date(2018, m, sessionStorage.getItem("days03"), sessionStorage.getItem("endTime3"), (sessionStorage.getItem("eTime3"))),
+					allDay: false,
+					className: 'important'
+				},
+				{
 					title: obj[4].name,
-					start: new Date(2018, m, sessionStorage.getItem("day4"), sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
+					start: new Date(2018, m, sessionStorage.getItem("days4"), sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
 					end: new Date(2018, m, sessionStorage.getItem("days4"), sessionStorage.getItem("endTime4"), (sessionStorage.getItem("eTime4"))),
+					allDay: false,
+					className : 'chill'
+				},
+				{
+					title: obj[4].name,
+					start: new Date(2018, m, sessionStorage.getItem("days04"), sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
+					end: new Date(2018, m, sessionStorage.getItem("days04"), sessionStorage.getItem("endTime4"), (sessionStorage.getItem("eTime4"))),
+					allDay: false,
+					className : 'chill'
+				},
+				{
+					title: obj[0].name,
+					start: new Date(2018, m, sessionStorage.getItem("days0")+7, sessionStorage.getItem("startTime0"), (sessionStorage.getItem("sTime0"))),
+					end: new Date(2018, m, sessionStorage.getItem("days0")+7, sessionStorage.getItem("endTime0"), (sessionStorage.getItem("eTime0"))),
+					allDay: false,
+					className: 'info'
+				},
+				{
+					title: obj[0].name,
+					start: new Date(2018, m, sessionStorage.getItem("days00")+7, sessionStorage.getItem("startTime0"), (sessionStorage.getItem("sTime0"))),
+					end: new Date(2018, m, sessionStorage.getItem("days00")+7, sessionStorage.getItem("endTime0"), (sessionStorage.getItem("eTime0"))),
+					allDay: false,
+					className: 'info'
+				},
+				{
+					title: obj[1].name,
+					start: new Date(2018, m, sessionStorage.getItem("days1")+7, sessionStorage.getItem("startTime1"), (sessionStorage.getItem("sTime1"))),
+					end: new Date(2018, m, sessionStorage.getItem("days1")+7, sessionStorage.getItem("endTime1"), (sessionStorage.getItem("eTime1"))),
+					allDay: false,
+					className: 'success'
+				},
+				{
+					title: obj[1].name,
+					start: new Date(2018, m, sessionStorage.getItem("days01")+7, sessionStorage.getItem("startTime1"), (sessionStorage.getItem("sTime1"))),
+					end: new Date(2018, m, sessionStorage.getItem("days01")+7, sessionStorage.getItem("endTime1"), (sessionStorage.getItem("eTime1"))),
+					allDay: false,
+					className: 'success'
+				},
+				{
+					title: obj[2].name,
+					start: new Date(2018, m, sessionStorage.getItem("days2")+7, sessionStorage.getItem("startTime2"), (sessionStorage.getItem("sTime2"))),
+					end: new Date(2018, m, sessionStorage.getItem("days2")+7, sessionStorage.getItem("endTime2"), (sessionStorage.getItem("eTime2"))),
+					allDay: false,
+					className: 'default'
+				},
+				{
+					title: obj[2].name,
+					start: new Date(2018, m, sessionStorage.getItem("days02")+7, sessionStorage.getItem("startTime2"), (sessionStorage.getItem("sTime2"))),
+					end: new Date(2018, m, sessionStorage.getItem("days02")+7, sessionStorage.getItem("endTime2"), (sessionStorage.getItem("eTime2"))),
+					allDay: false,
+					className: 'default'
+				},
+				{
+					title: obj[3].name,
+					start: new Date(2018, m, sessionStorage.getItem("days3")+7, sessionStorage.getItem("startTime3"), (sessionStorage.getItem("sTime3"))),
+					end: new Date(2018, m, sessionStorage.getItem("days3")+7, sessionStorage.getItem("endTime3"), (sessionStorage.getItem("eTime3"))),
+					allDay: false,
+					className: 'important'
+				},
+				{
+					title: obj[3].name,
+					start: new Date(2018, m, sessionStorage.getItem("days03")+7, sessionStorage.getItem("startTime3"), (sessionStorage.getItem("sTime3"))),
+					end: new Date(2018, m, sessionStorage.getItem("days03")+7, sessionStorage.getItem("endTime3"), (sessionStorage.getItem("eTime3"))),
+					allDay: false,
+					className: 'important'
+				},
+				{
+					title: obj[4].name,
+					start: new Date(2018, m, sessionStorage.getItem("days4")+7, sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
+					end: new Date(2018, m, sessionStorage.getItem("days4")+7, sessionStorage.getItem("endTime4"), (sessionStorage.getItem("eTime4"))),
+					allDay: false,
+					className : 'chill'
+				},
+				{
+					title: obj[4].name,
+					start: new Date(2018, m, sessionStorage.getItem("days04")+7, sessionStorage.getItem("startTime4"), (sessionStorage.getItem("sTime4"))),
+					end: new Date(2018, m, sessionStorage.getItem("days04")+7, sessionStorage.getItem("endTime4"), (sessionStorage.getItem("eTime4"))),
 					allDay: false,
 					className : 'chill'
 				},
