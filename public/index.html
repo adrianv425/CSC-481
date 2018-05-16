@@ -38,27 +38,12 @@
 <script src='index.js'></script>
 
 </head>
-<body>
+<body onload="getSubs()">
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="index.html">CSUDH Smart Class Scheduler</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			Menu
-			<i class="fa fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#download">Add Classes</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#features">View Schedule</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#contact">Map</a>
-				</li>
-			</ul>
+
 			</div>
 		</div>
 		</nav>
@@ -69,110 +54,19 @@
 			<div class="col-lg-7 my-auto">
 				<div class="header-content mx-auto">
         <h1 class="mb-5">A class scheduler that is almost as smart and beautiful as you are. </h1>
-				<a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now!</a>
+				<a href="#download" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "change()">Load All Classes...</a>
 				</div>
-			</div>
-			<div class="col-lg-5 my-auto">
-		
 			</div>
 			</div>
 		</div>
 		</header>
 	
 		<section class="download bg-primary text-center" id="download">
-		<div class="container">
-			<div class="row">
-			<div class="col-md-8 mx-auto">
-				<h2 class="section-heading">Add Classes</h2>
-				<div class="col mt-sm-6 mt-md-0">
-		<form>
-			<!--Class 1-->
-				<div class="form-group row">
-					<label for="class1" class="col-3 col-form-label-lg">Class 1</label>
-					<div class="col-4">
-							<input class="form-control-lg" type="text"  value = "CSC 121" placeholder = "CSC xxx" id="class1">
-					</div>
-				</div>
-			<!--Class 2-->
-				<div class="form-group row">
-						<label for="class2" class="col-3 col-form-label-lg">Class 2</label>
-						<div class="col-4">
-								<input class="form-control-lg" type="text"  value = "CSC 123" placeholder = "CSC xxx" id="class2">
-						</div>
-				</div>
-			<!--Class 3-->
-				<div class="form-group row">
-						<label for="class3" class="col-3 col-form-label-lg">Class 3</label>
-						<div class="col-4">
-								<input class="form-control-lg" type="text"  value = "CSC 301"  placeholder = "CSC xxx" id="class3">
-						</div>
-				</div>
-			<!--Class 4-->
-				<div class="form-group row">
-						<label for="class4" class="col-3 col-form-label-lg">Class 4</label>
-						<div class="col-4">
-								<input class="form-control-lg" type="text"  value = "CSC 481" placeholder = "CSC xxx" id="class4">
-						</div>
-				</div>
-			<!--Class 5-->
-				<div class="form-group row">
-						<label for="class5" class="col-3 col-form-label-lg">Class 5</label>
-						<div class="col-4">
-								<input class="form-control-lg" type="text" value = "CSC 221" placeholder = "CSC xxx" id="class5">
-						</div>
-				</div>
-			<!--Check if all classes are neccessary-->
-				<div class="form-check">
-					<input type="checkbox" class="form-check-input-lg" id="checkBox">
-					<label class="form-check-label-lg" for="exampleCheck1">Check box if all classes are neccessary.</label>
-				</div>
-				<button><a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "donow()">Start!</a></button>
-				</form>
-				
-			</div>
-			</div>
-		</div>
-		</div>
+		
 		</section>
 	
 		<section class="contact bg-secondary" id="contact">
-		<div class="row mt-sm-6 mt-md-0">
-		<div class="container">
-			<h2>All available classes</h2>
-				<div class="panel-group">
-				<div class="panel panel-danger">
-					<div class="panel-heading" id = "headc1">Class 1 options</div>
-					<div class="panel-body" id = "c1"></div>
-				</div>
-			
-				<div class="panel panel-primary">
-					<div class="panel-heading" id = "headc2">Class 2 options</div>
-					<div class="panel-body" id = "c2"></div>
-				</div>
-			
-				<div class="panel panel-success">
-					<div class="panel-heading" id = "headc3">Class 3 options</div>
-					<div class="panel-body" id = "c3"></div>
-				</div>
-			
-				<div class="panel panel-info">
-					<div class="panel-heading" id = "headc4">Class 4 options</div>
-					<div class="panel-body" id = "c4"></div>
-				</div>
-			
-				<div class="panel panel-warning">
-					<div class="panel-heading" id = "headc5">Class 5 options</div>
-					<div class="panel-body" id = "c5"></div>
-				</div>
-				<button><a href="fullcalendar.html" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "scheduler()">Start!</a></button>
-				</div>
-				
-		<div id="map" style="width:100%;height:400px;">
-		<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKVTMchT2jJv8oFJmjw1wSdfH02Lx1XU&callback=myMap"></script>-->
 		
-		</div>
-		</div>
-		</div>
 		</section>    
 	
 		<!-- Bootstrap core JavaScript -->

@@ -1,4 +1,4 @@
-var arrowBtn = document.getElementById("arrowbtn");
+
 
 //Variables for each class and course number
 var name1 = "", num1 = "";
@@ -14,14 +14,21 @@ var c1selections =[], c2selections =[], c3selections =[], c4selections =[], c5se
 //variable to hold classes selected by algorithm
 var selected = [];
 
+var subs = [];
+var s1 = [], s2 = [], s3 =[], s4 = [], s5 = [];
+
 function donow(){
-    sessionStorage.clear();
     //Get the values inputted by the user and hold them in variables respectively
-    var c1Element = document.getElementById('class1').value;
-    var c2Element = document.getElementById('class2').value;
-    var c3Element = document.getElementById('class3').value;
-    var c4Element = document.getElementById('class4').value;
-    var c5Element = document.getElementById('class5').value;
+    var name1 = sessionStorage.getItem("nam1");
+    var name2 = sessionStorage.getItem("nam2");
+    var name3 = sessionStorage.getItem("nam3");
+    var name4 = sessionStorage.getItem("nam4");
+    var name5 = sessionStorage.getItem("nam5");
+    var num1 = sessionStorage.getItem("cou1");
+    var num2 = sessionStorage.getItem("cou2");
+    var num3 = sessionStorage.getItem("cou3");
+    var num4 = sessionStorage.getItem("cou4");
+    var num5 = sessionStorage.getItem("cou5");
 
 
     //Test window
@@ -31,7 +38,7 @@ function donow(){
                     + c4Element +"\n"  
                     + c5Element);*/
 
-    //Slice string to have the class name (CSC, BUS, CIS) and course number (101,121,301)
+    /*Slice string to have the class name (CSC, BUS, CIS) and course number (101,121,301)
     if(c1Element.length > 5){
         name1 = c1Element.substr(0,3);
         num1 = c1Element.substr(4,3);
@@ -51,7 +58,7 @@ function donow(){
     if(c5Element.length > 5){
         name5 = c5Element.substr(0,3);
         num5 = c5Element.substr(4,3);
-    }
+    }*/
 
     //Find the references in database
     var firebaseD = firebase.database();
@@ -71,6 +78,7 @@ function donow(){
         }
     }
 
+    document.getElementById("contact").innerHTML = '<div class="row mt-sm-6 mt-md-0"><div class="container"><h1 class = "mb-5">All available classes</h1><div class="panel-group"><div class="panel panel-danger"><div class="panel-heading" id = "headc1">Class 1 options</div><div class="panel-body" id = "c1"></div></div><div class="panel panel-primary"><div class="panel-heading" id = "headc2">Class 2 options</div><div class="panel-body" id = "c2"></div></div><div class="panel panel-success"><div class="panel-heading" id = "headc3">Class 3 options</div><div class="panel-body" id = "c3"></div></div><div class="panel panel-info"><div class="panel-heading" id = "headc4">Class 4 options</div><div class="panel-body" id = "c4"></div></div><div class="panel panel-warning"><div class="panel-heading" id = "headc5">Class 5 options</div><div class="panel-body" id = "c5"></div></div><button><a class="btn btn-outline btn-xl js-scroll-trigger" onclick = "scheduler()">Build Auto Schedule!</a></button></div></div></div></div></div>'
 
     allSelections(c1Ref, 1, c1selections);
     allSelections(c2Ref, 2, c2selections);
@@ -94,6 +102,144 @@ function allSelections(ref, num, sel){
             sel[sel.length] = childData;
        });
       });
+}
+
+function getSubs(){
+    sessionStorage.clear();
+    var firebaseD = firebase.database();
+    var ref = firebaseD.ref("/");
+    ref.once('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();;
+            subs[subs.length] = childSnapshot.key;
+            console.log(subs[subs.length-1]);
+        });
+    });
+}
+
+function getCourses(sub, num){
+    var s = [];
+    var firebaseD = firebase.database().ref("/"+sub);
+    firebaseD.once('value',function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+            switch(num){
+                case 1:
+                    s1[s1.length] = childSnapshot.key;
+                    s = s1;
+                    break;
+                case 2:
+                    s2[s2.length] = childSnapshot.key;
+                    s = s2;
+                    break;
+                case 3:
+                    s3[s3.length] = childSnapshot.key;
+                    s = s3;
+                    break;
+                case 4:
+                    s4[s4.length] = childSnapshot.key;
+                    s = s4;
+                    break;
+                case 5:
+                    s5[s5.length] = childSnapshot.key;
+                    s = s5;
+                    break;
+                default:
+                    s = null;
+                    console.log("couldn't find class num");
+                    break;
+            }
+        });
+    });
+    setTimeout(function(){
+        change2(sub, num, s);
+    },1000);
+}
+
+function getRatings(){
+    var cRef = [];
+    var cRat = [];
+    var firebaseD = firebase.database();
+    
+    if(selected[0] != null){
+        cRef[0] = firebaseD.ref("/profs/"+selected[0].pLastName);
+        console.log("i = " + 0);
+        cRef[0].once('value').then(function(snapshot) {
+            if(snapshot.val() != null){
+                var childData = snapshot.val().rating || 'N/A';
+                sessionStorage.setItem("rating" + 0, childData);
+                console.log(0);
+            }
+            else
+            {
+                sessionStorage.setItem("rating" + 0, 'N/A');
+                console.log('2 ' + 0);
+            }
+        });
+    }
+    if(selected[1] != null){
+        cRef[1] = firebaseD.ref("/profs/"+selected[1].pLastName);
+        console.log("i = " + 1);
+        cRef[1].once('value').then(function(snapshot) {
+            if(snapshot.val() != null){
+                var childData = snapshot.val().rating || 'N/A';
+                sessionStorage.setItem("rating" + 1, childData);
+                console.log(1);
+            }
+            else
+            {
+                sessionStorage.setItem("rating" + 1, 'N/A');
+                console.log('2 ' + 1);
+            }
+        });
+    }
+    if(selected[2] != null){
+        cRef[2] = firebaseD.ref("/profs/"+selected[2].pLastName);
+        console.log("i = " + 2);
+        cRef[2].once('value').then(function(snapshot) {
+            if(snapshot.val() != null){
+                var childData = snapshot.val().rating || 'N/A';
+                sessionStorage.setItem("rating" + 2, childData);
+                console.log(2);
+            }
+            else
+            {
+                sessionStorage.setItem("rating" + 2, 'N/A');
+                console.log('2 ' + 2);
+            }
+        });
+    }
+    if(selected[3] != null){
+        cRef[3] = firebaseD.ref("/profs/"+selected[3].pLastName);
+        console.log("i = " + 3);
+        cRef[3].once('value').then(function(snapshot) {
+            if(snapshot.val() != null){
+                var childData = snapshot.val().rating || 'N/A';
+                sessionStorage.setItem("rating" + 3, childData);
+                console.log(3);
+            }
+            else
+            {
+                sessionStorage.setItem("rating" + 3, 'N/A');
+                console.log('2 ' + 3);
+            }
+        });
+    }
+    if(selected[4] != null){
+        cRef[4] = firebaseD.ref("/profs/"+selected[4].pLastName);
+        console.log("i = " + 4);
+        cRef[4].once('value').then(function(snapshot) {
+            if(snapshot.val() != null){
+                var childData = snapshot.val().rating || 'N/A';
+                sessionStorage.setItem("rating" + 4, childData);
+                console.log(4);
+            }
+            else
+            {
+                sessionStorage.setItem("rating" + 4, 'N/A');
+                console.log('2 ' + 4);
+            }
+        });
+    }
 }
 
 //function to zero an array
@@ -348,6 +494,41 @@ function scheduler(){
     }
     var str = JSON.stringify(selected);
     sessionStorage.setItem("selected", str);
+    getRatings();
+    document.getElementById("contact").innerHTML = document.getElementById("contact").innerHTML + '<button><a href="fullcalendar.html" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "">See your schedule</a></button>'
+}
+
+function change(){
+    document.getElementById("download").innerHTML = '<div class="container"><div class="row"><div class="col-md-8 mx-auto"><h2 class="section-heading">Add Classes</h2><div class="col mt-sm-6 mt-md-0"><div class="btn-group" id= "cb1"></div><div class="btn-group" id= "cb2"></div><div class="btn-group" id= "cb3"></div><div class="btn-group" id= "cb4"></div><div class="btn-group" id= "cb5"></div><button><a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "donow()">Start!</a></button></div></div></div></div>';
+    for(var j =1; j < 6; j++){
+        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject 1</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+        for(var i =0; i < subs.length; i++){
+            console.log(i);
+            document.getElementById("cb"+j).innerHTML =  document.getElementById("cb"+j).innerHTML + '<li><a onclick="getCourses(\'' + subs[i] + '\','+j+')">' + subs[i] + '</a></li>';
+        }
+        document.getElementById("cb"+j).innerHTML = document.getElementById("cb"+j).innerHTML + '</ul>';
+    }
+}
+
+function change2(str,num,s){
+    console.log(s.length);
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course #<span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+    for(var i =0; i < s.length; i++){
+        console.log(i);
+        document.getElementById("cb"+num).innerHTML =  document.getElementById("cb"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+','+s+')">' + s[i] + '</a></li>';
+    }
+    document.getElementById("cb"+num).innerHTML = document.getElementById("cb"+num).innerHTML + '</ul>';
+}
+
+function change3(str, sub, num, s){
+    sessionStorage.setItem("nam"+num, str);
+    sessionStorage.setItem("cou"+num, sub);
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">'+ sub +'<span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+    for(var i =0; i < s.length; i++){
+        console.log(i);
+        document.getElementById("cb"+num).innerHTML =  document.getElementById("cb"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+',' + s +')">' + s[i] + '</a></li>';
+    }
+    document.getElementById("cb"+num).innerHTML = document.getElementById("cb"+num).innerHTML + '</ul>';
 }
 
 function getSchedule(){

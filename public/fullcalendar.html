@@ -8,6 +8,18 @@
 <script src='js/jquery/jquery-ui.custom.min.js'></script>
 
 <script src='js/fullcalendar.js'></script>
+<!-- Bootstrap core CSS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+<link href="css/new-age.min.css" rel="stylesheet">
 <script src='index.js'></script>
 <script>
 	var obj = JSON.parse(sessionStorage.getItem("selected"));
@@ -55,7 +67,7 @@
 		var calendar =  $('#calendar').fullCalendar({
 			header: {
 				left: 'title',
-				center: 'agendaDay,agendaWeek',
+				center: 'agendaDay,agendaWeek,agendaMonth',
 				right: 'prev,next today'
 			},
 			editable: false,
@@ -128,7 +140,7 @@
 		for(var i = 0; i < 17; i++){
 			for(var j=0; j<5; j++){
 			e.push({
-					title: obj[j].name,
+					title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
 					start: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
 					end: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
 					allDay: false,
@@ -136,11 +148,11 @@
 				});
 			if(sessionStorage.getItem("days"+j)!=sessionStorage.getItem("days0"+j)){
 				e.push({
-					title: obj[j].name,
+					title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
 					start: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
 					end: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
 					allDay: false,
-					className: 'info'
+					className: 'success'
 				});
 			}
 			}
@@ -209,11 +221,42 @@
 </style>
 </head>
 <body>
-<div id='wrap'>
+	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+	<div class="container">
+		<a class="navbar-brand js-scroll-trigger" href="index.html">CSUDH Smart Class Scheduler</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		Menu
+		<i class="fa fa-bars"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#download">Add Classes</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#features">View Schedule</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#contact">Map</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<header class="masthead">
+	<div class="container h-100">
+		<div class="row h-100">
+			<div class="col-lg-7 my-auto">
+			<div id='wrap'>
 
-<div id='calendar'></div>
+			<div id='calendar'></div>
 
-<div style='clear:both'></div>
-</div>
+			<div style='clear:both'></div>
+			</div>
+			</div>
+		</div>
+	</div>
+</header>
 </body>
 </html>
