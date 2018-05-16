@@ -501,7 +501,7 @@ function scheduler(){
 function change(){
     document.getElementById("download").innerHTML = '<div class="container"><div class="row"><div class="col-md-8 mx-auto"><h2 class="section-heading">Add Classes</h2><div class="col mt-sm-6 mt-md-0"><div class="btn-group" id= "cb1"></div><div class="btn-group" id= "cb2"></div><div class="btn-group" id= "cb3"></div><div class="btn-group" id= "cb4"></div><div class="btn-group" id= "cb5"></div><button><a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "donow()">Start!</a></button></div></div></div></div>';
     for(var j =1; j < 6; j++){
-        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject 1</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject '+j+'</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
         for(var i =0; i < subs.length; i++){
             console.log(i);
             document.getElementById("cb"+j).innerHTML =  document.getElementById("cb"+j).innerHTML + '<li><a onclick="getCourses(\'' + subs[i] + '\','+j+')">' + subs[i] + '</a></li>';
