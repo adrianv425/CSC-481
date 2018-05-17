@@ -469,7 +469,7 @@ function scheduler(){
 function change(){
     document.getElementById("download").innerHTML = '<div class="container"><div class="row"><div class="col-md-8 mx-auto"><h2 class="section-heading">Add Classes</h2><div class="col mt-sm-6 mt-md-0"><div class="btn-group" id= "cb1"></div><div class="btn-group" id= "cb2"></div><div class="btn-group" id= "cb3"></div><div class="btn-group" id= "cb4"></div><div class="btn-group" id= "cb5"></div></div><button href="#contact" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "donow()">Start!</button></div></div></div>';
     for(var j =1; j < 6; j++){
-        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject '+j+'</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ul'+j+'"></ul>';
+        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject '+j+'</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu scrollable-menu" role="menu" id = "ul'+j+'"></ul>';
         for(var i =0; i < subs.length; i++){
             console.log(i);
             document.getElementById("ul"+j).innerHTML =  document.getElementById("ul"+j).innerHTML + '<li><a onclick="getCourses(\'' + subs[i] + '\','+j+')">' + subs[i] + '</a></li>';
@@ -479,7 +479,7 @@ function change(){
 
 function change2(str,num,s){
     console.log(s.length);
-    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course #<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ull'+num+'"></ul>';
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course #<span class="caret"></span></button><ul class="dropdown-menu scrollable-menu" role="menu" id = "ull'+num+'"></ul>';
     for(var i =0; i < s.length; i++){
         console.log(i);
         document.getElementById("ull"+num).innerHTML =  document.getElementById("ull"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+','+s+')">' + s[i] + '</a></li>';
@@ -489,7 +489,7 @@ function change2(str,num,s){
 function change3(str, sub, num, s){
     sessionStorage.setItem("nam"+num, str);
     sessionStorage.setItem("cou"+num, sub);
-    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">'+ sub +'<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ulll'+num+'"></ul>';
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">'+ sub +'<span class="caret"></span></button><ul class="dropdown-menu scrollable-menu" role="menu" id = "ulll'+num+'"></ul>';
     for(var i =0; i < s.length; i++){
         console.log(i);
         document.getElementById("cb"+num).innerHTML =  document.getElementById("cb"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+',' + s +')">' + s[i] + '</a></li>';
