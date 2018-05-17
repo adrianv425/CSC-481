@@ -1,5 +1,3 @@
-
-
 //Variables for each class and course number
 var name1 = "", num1 = "";
 var name2 = "", num2 = "";
@@ -29,36 +27,6 @@ function donow(){
     var num3 = sessionStorage.getItem("cou3");
     var num4 = sessionStorage.getItem("cou4");
     var num5 = sessionStorage.getItem("cou5");
-
-
-    //Test window
-    /*alert("You inputted:\n" + c1Element +"\n" 
-                    + c2Element +"\n" 
-                    + c3Element +"\n"  
-                    + c4Element +"\n"  
-                    + c5Element);*/
-
-    /*Slice string to have the class name (CSC, BUS, CIS) and course number (101,121,301)
-    if(c1Element.length > 5){
-        name1 = c1Element.substr(0,3);
-        num1 = c1Element.substr(4,3);
-    }
-    if(c2Element.length > 5){
-        name2 = c2Element.substr(0,3);
-        num2 = c2Element.substr(4,3);
-    }
-    if(c3Element.length > 5){
-        name3 = c3Element.substr(0,3);
-        num3 = c3Element.substr(4,3);
-    }
-    if(c4Element.length > 5){
-        name4 = c4Element.substr(0,3);
-        num4 = c4Element.substr(4,3);
-    }
-    if(c5Element.length > 5){
-        name5 = c5Element.substr(0,3);
-        num5 = c5Element.substr(4,3);
-    }*/
 
     //Find the references in database
     var firebaseD = firebase.database();
@@ -501,34 +469,31 @@ function scheduler(){
 function change(){
     document.getElementById("download").innerHTML = '<div class="container"><div class="row"><div class="col-md-8 mx-auto"><h2 class="section-heading">Add Classes</h2><div class="col mt-sm-6 mt-md-0"><div class="btn-group" id= "cb1"></div><div class="btn-group" id= "cb2"></div><div class="btn-group" id= "cb3"></div><div class="btn-group" id= "cb4"></div><div class="btn-group" id= "cb5"></div><button><a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger" onclick = "donow()">Start!</a></button></div></div></div></div>';
     for(var j =1; j < 6; j++){
-        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject '+j+'</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+        document.getElementById("cb"+j).innerHTML = '<button type="button" class="btn btn-primary">Class Subject '+j+'</button><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ul'+j+'"></ul>';
         for(var i =0; i < subs.length; i++){
             console.log(i);
-            document.getElementById("cb"+j).innerHTML =  document.getElementById("cb"+j).innerHTML + '<li><a onclick="getCourses(\'' + subs[i] + '\','+j+')">' + subs[i] + '</a></li>';
-        }
-        document.getElementById("cb"+j).innerHTML = document.getElementById("cb"+j).innerHTML + '</ul>';
+            document.getElementById("ul"+j).innerHTML =  document.getElementById("ul"+j).innerHTML + '<li><a onclick="getCourses(\'' + subs[i] + '\','+j+')">' + subs[i] + '</a></li>';
+        };
     }
 }
 
 function change2(str,num,s){
     console.log(s.length);
-    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course #<span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course #<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ull'+num+'"></ul>';
     for(var i =0; i < s.length; i++){
         console.log(i);
-        document.getElementById("cb"+num).innerHTML =  document.getElementById("cb"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+','+s+')">' + s[i] + '</a></li>';
+        document.getElementById("ull"+num).innerHTML =  document.getElementById("ull"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+','+s+')">' + s[i] + '</a></li>';
     }
-    document.getElementById("cb"+num).innerHTML = document.getElementById("cb"+num).innerHTML + '</ul>';
 }
 
 function change3(str, sub, num, s){
     sessionStorage.setItem("nam"+num, str);
     sessionStorage.setItem("cou"+num, sub);
-    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">'+ sub +'<span class="caret"></span></button><ul class="dropdown-menu" role="menu">';
+    document.getElementById("cb"+num).innerHTML = '<button type="button" class="btn btn-primary">'+str+'</button><div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">'+ sub +'<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id = "ulll'+num+'"></ul>';
     for(var i =0; i < s.length; i++){
         console.log(i);
         document.getElementById("cb"+num).innerHTML =  document.getElementById("cb"+num).innerHTML + '<li><a onclick="change3(\''+ str+ '\',\'' + s[i] + '\', ' +num+',' + s +')">' + s[i] + '</a></li>';
     }
-    document.getElementById("cb"+num).innerHTML = document.getElementById("cb"+num).innerHTML + '</ul>';
 }
 
 function getSchedule(){

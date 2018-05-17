@@ -139,22 +139,24 @@
 		var e = [];
 		for(var i = 0; i < 17; i++){
 			for(var j=0; j<5; j++){
-			e.push({
-					title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
-					start: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
-					end: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
-					allDay: false,
-					className: 'info'
-				});
-			if(sessionStorage.getItem("days"+j)!=sessionStorage.getItem("days0"+j)){
-				e.push({
-					title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
-					start: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
-					end: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
-					allDay: false,
-					className: 'success'
-				});
-			}
+				if(obj[j]!=null){
+					e.push({
+							title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
+							start: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
+							end: new Date(2018, 0, parseInt(sessionStorage.getItem("days"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
+							allDay: false,
+							className: 'info'
+						});
+					if(sessionStorage.getItem("days"+j)!=sessionStorage.getItem("days0"+j)){
+						e.push({
+							title: obj[j].name + "\n" + sessionStorage.getItem("rating" + j),
+							start: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("startTime"+j), (sessionStorage.getItem("sTime"+j))),
+							end: new Date(2018, 0, parseInt(sessionStorage.getItem("days0"+j))+(i*7)+22, sessionStorage.getItem("endTime"+j), (sessionStorage.getItem("eTime"+j))),
+							allDay: false,
+							className: 'success'
+						});
+					}
+				}
 			}
 		}
 		return e;
