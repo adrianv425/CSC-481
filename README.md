@@ -1,10 +1,6 @@
 # CSC-481
 CSUDH Class Scheduler
 
-to publish new version to domain:
-in terminal
-  navigate to this folder
-  -npm install
-  -firebase deploy
-  
-*Once you publish a new version, code must be updated on GitHub as well*
+A platform for students to easily visualize the different schedule options available to them depending on the course selections and offerings.
+
+![Class Screenshot](/Class.png)
